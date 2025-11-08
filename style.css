@@ -1,0 +1,429 @@
+:root{
+  --spotify-green: #1DB954;
+  --yt-red: #ff4b4b;
+  --apple-pink: #ff2f56;
+  --muted: #9aa0a6;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  background:#121212;
+  color:#fff;
+  font-size:18px;
+  transition: background .3s, color .3s, border-color .3s;
+}
+
+/* sidebar */
+.sidebar{
+  position:fixed;left:0;top:0;bottom:0;
+  width:260px;
+  background:#000;
+  padding:16px 14px;
+  display:flex;flex-direction:column;gap:18px;
+  transition:width .25s, background .3s, color .3s;
+}
+.sidebar.collapsed{width:90px}
+.sidebar .sidebar-top{display:flex;align-items:center;gap:12px}
+.menu-btn{background:none;border:0;color:inherit;cursor:pointer;padding:6px}
+.brand img{width:44px;height:44px;border-radius:6px;display:block}
+.brand .brand-text{font-weight:600;font-size:1.1rem}
+.nav{display:flex;flex-direction:column;gap:10px}
+.nav .nav-btn{
+  display:flex;align-items:center;gap:14px;
+  border:0;background:none;color:inherit;
+  padding:14px;border-radius:6px;cursor:pointer;text-align:left;
+  font-size:1rem;
+}
+.nav .nav-btn .icon{width:22px;height:22px}
+.nav .nav-btn .label{white-space:nowrap}
+.sidebar.collapsed .label{display:none}
+
+/* main area layout */
+.main-area{margin-left:260px;display:flex;flex-direction:column;min-height:100vh;transition:margin-left .25s}
+.sidebar.collapsed ~ .main-area{margin-left:90px}
+
+/* topbar */
+.topbar{display:flex;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid rgba(255,255,255,0.04);transition: background .3s, color .3s, border-color .3s;}
+.search-wrap{flex:1;position:relative;max-width:720px;margin-left:6px}
+.search-wrap input{
+  width:100%;padding:12px 40px 12px 14px;
+  border-radius:6px;border:1px solid #333;
+  background:#111;color:#fff;font-size:1rem;
+}
+.search-wrap .search-icon{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:20px;height:20px}
+
+/* top controls */
+.top-controls{display:flex;gap:14px;align-items:center}
+.theme-toggle{width:44px;height:28px;border-radius:14px;background:#222;border:0;position:relative;cursor:pointer}
+.theme-indicator{display:block;width:14px;height:14px;border-radius:50%;background:var(--yt-red);position:absolute;top:7px;left:7px;transition:left .2s,background .2s}
+.profile-btn{background:none;border:0;color:inherit;cursor:pointer;padding:8px}
+
+/* content */
+.content{
+  display:flex;
+  gap:16px;
+  padding:22px 24px;
+  margin-right:300px; /* prevents overlap with lyrics panel */
+}
+.page{display:none;flex:1}
+.page.active{display:block}
+.song-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.song-card{display:flex;align-items:center;gap:14px;padding:12px;border-radius:8px;background:rgba(255,255,255,0.03)}
+.song-card img{width:80px;height:80px;border-radius:6px;object-fit:cover}
+.song-card .meta{flex:1}
+.song-card .title{font-weight:600;font-size:1.05rem}
+.song-card .artist{color:var(--muted);font-size:1rem}
+.play-small{background:none;border:0;color:inherit;cursor:pointer;padding:8px;font-size:1.1rem}
+
+/* lyrics  */
+.lyrics{
+  position:fixed;
+  right:0;
+  top:72px;
+  width:300px;
+  bottom:88px;
+  padding:16px;
+  border-left:1px solid rgba(255,255,255,0.04);
+  background:rgba(0,0,0,0.4);
+  overflow:auto;
+  font-size:1rem;
+  transition: background .3s, color .3s, border-color .3s;
+}
+.lyrics h3{margin:0 0 10px 0}
+.lyrics-text{color:var(--muted);font-size:1rem;white-space:pre-wrap}
+
+/* player  */
+.player{position:fixed;left:260px;right:0;bottom:0;height:88px;display:flex;align-items:center;gap:16px;padding:12px 20px;border-top:1px solid rgba(255,255,255,0.04);background:#0b0b0b;transition: background .3s, color .3s, border-color .3s;}
+.sidebar.collapsed ~ .main-area .player{left:90px}
+.player img{width:72px;height:72px;border-radius:6px;object-fit:cover}
+.player-meta{min-width:240px;font-size:1rem}
+.player-controls{display:flex;gap:12px}
+.player-controls button{font-size:1.2rem}
+.progress-wrap{flex:1;display:flex;align-items:center;gap:12px}
+#progress{width:100%;height:6px}
+.muted{color:var(--muted);font-size:1rem}
+
+/* lists */
+.list{list-style:none;padding:10px}
+.list li{padding:12px;border-radius:6px;background:rgba(255,255,255,0.02);margin-bottom:10px;font-size:1rem}
+
+/* THEMES */
+/* YouTube theme*/
+.yt-theme {
+  background:#121212;
+  color:#fff;
+}
+
+.yt-theme .theme-indicator {
+  background:var(--yt-red);
+  left:7px;
+}
+
+.yt-theme .nav .nav-btn.active {
+  background: rgba(255,75,75,0.15); /* soft red highlight */
+  color: var(--yt-red);
+  font-weight:600;
+}
+
+.yt-theme .song-card.playing {
+  border: 2px solid var(--yt-red);
+}
+
+.yt-theme .player-controls button {
+  color: var(--yt-red);
+}
+
+.yt-theme .progress-wrap input[type=range]::-webkit-slider-thumb {
+  background: var(--yt-red);
+}
+.yt-theme .progress-wrap input[type=range]::-moz-range-thumb {
+  background: var(--yt-red);
+}
+
+.yt-theme h2,
+.yt-theme h3,
+.yt-theme .title {
+  color: var(--yt-red);
+}
+
+.yt-theme .title,
+.yt-theme h2 {
+  text-shadow: 0 0 6px rgba(255, 75, 75, 0.4);
+}
+
+
+/* Spotify theme*/
+.spotify-theme {
+  background: #06402B; 
+  color: #000;
+}
+
+.spotify-theme .sidebar,
+.spotify-theme .topbar {
+  background: #000;  
+  color: #fff;
+  border-color: rgba(255,255,255,0.1);
+}
+
+.spotify-theme .player,
+.spotify-theme .lyrics,
+.spotify-theme .content {
+  background: #06402B; /* deep green panels */
+  color: #000;
+  border-color: rgba(0,0,0,0.1);
+}
+
+.spotify-theme .nav .nav-btn {color:#fff;}
+.spotify-theme .nav .nav-btn.active {
+  background: rgba(255,255,255,0.1);
+  color: #0FB84C; /* refined green accent */
+  font-weight:600;
+}
+
+.spotify-theme .song-card {
+  background: rgba(0,0,0,0.08);
+}
+.spotify-theme .song-card.playing {
+  border: 2px solid #0FB84C; 
+}
+
+.spotify-theme .player-controls button {
+  color: #0FB84C; 
+}
+
+.spotify-theme .progress-wrap input[type=range]::-webkit-slider-thumb {
+  background: #0FB84C;
+}
+.spotify-theme .progress-wrap input[type=range]::-moz-range-thumb {
+  background: #0FB84C;
+}
+
+.spotify-theme .theme-indicator {
+  background: #0FB84C;
+  left: 24px;
+}
+
+
+/* Apple theme —  */
+.apple-theme{background:#faf8f8;color:#111}
+.apple-theme .theme-indicator{background:var(--apple-pink);left:14px}
+.apple-theme .search-wrap input{background:#fff;color:#000;border:1px solid #e6e6e6}
+.apple-theme .sidebar,
+.apple-theme .topbar,
+.apple-theme .player{background:#fff;color:#111;border-color:#e6e6e6;}
+.apple-theme .nav .nav-btn{color:#111;}
+.apple-theme .nav .nav-btn.active{background:#f0f0f0;font-weight:600;}
+.apple-theme .lyrics{background:#fafafa;color:#111;border-color:#e6e6e6;}
+
+/* === Purple theme  */
+.purple-theme {
+  background: #2B0B33; 
+  color: #fff;
+}
+
+
+.purple-theme .sidebar,
+.purple-theme .topbar {
+  background: #1a001f;
+  color: #fff;
+  border-color: rgba(255,255,255,0.1);
+}
+
+
+.purple-theme .player,
+.purple-theme .lyrics,
+.purple-theme .content {
+  background: #3a1042;
+  color: #fff;
+  border-color: rgba(0,0,0,0.1);
+}
+
+/* navigation highlight */
+.purple-theme .nav .nav-btn.active {
+  background: rgba(255,255,255,0.1);
+  color: #C77DFF; /* soft violet accent */
+  font-weight: 600;
+}
+
+/* song showing thingy & now playing border */
+.purple-theme .song-card {
+  background: rgba(255,255,255,0.05);
+}
+.purple-theme .song-card.playing {
+  border: 2px solid #C77DFF;
+}
+
+/* purple accents  */
+.purple-theme .player-controls button {
+  color: #C77DFF;
+}
+
+/* purple theme text */
+.purple-theme h2,
+.purple-theme h3,
+.purple-theme .title {
+  color: #C77DFF; 
+  text-shadow: 0 0 6px rgba(199, 125, 255, 0.3);
+}
+
+/* artist text */
+.purple-theme .artist,
+.purple-theme .muted,
+.purple-theme .lyrics-text {
+  color: rgba(255,255,255,0.7);
+}
+
+ 
+.purple-theme .theme-indicator {
+  background: #C77DFF;
+  left: 48px;
+}
+
+/* TOGGLE FOR 4 THEMES for color change */
+.theme-toggle {
+  position: relative;
+  width: 60px;         
+  height: 22px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.theme-indicator {
+  position: absolute;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transition: left 0.3s ease, background 0.3s ease;
+}
+
+/* Dot positions for each theme */
+body.yt-theme .theme-indicator {
+  left: 3px;
+  background: #FF0000; /* YouTube red */
+}
+
+body.spotify-theme .theme-indicator {
+  left: 18px;
+  background: #06402B; /* Spotify green */
+}
+
+body.apple-theme .theme-indicator {
+  left: 33px;
+  background: #aaa; /* Apple grey */
+}
+
+body.purple-theme .theme-indicator {
+  left: 48px;
+  background: #C77DFF; /* Purple accent */
+}
+
+/* LOGIN MODAL */
+.login-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.login-modal.active {
+  display: flex;
+}
+
+.login-box {
+  background: #111;
+  color: #fff;
+  padding: 30px;
+  border-radius: 14px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+}
+
+.login-box input:focus {
+  outline: 2px solid var(--accent-color);
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+#loginBtn {
+  background: var(--accent-color);
+  color: #fff;
+}
+#loginBtn:hover {
+  opacity: 0.85;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+.close-btn:hover {
+  color: var(--accent-color);
+}
+
+/* Theme-based accents */
+body.yt-theme {
+  --accent-color: #FF0000;
+}
+body.spotify-theme {
+  --accent-color: #06402B;
+}
+body.apple-theme {
+  --accent-color: #aaa;
+}
+body.purple-theme {
+  --accent-color: #C77DFF;
+}
+
+/* fixed overlapping */
+.content {
+  padding-bottom: 120px; /* creates space above the bottom player */
+  overflow-y: auto;      /* enables scrolling if content is long */
+}
+
+.song-grid {
+  padding-bottom: 20px;  /* small buffer inside the grid itself */
+}
+
+
+

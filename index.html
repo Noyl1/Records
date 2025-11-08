@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Records — Minimal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="yt-theme">
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar expanded">
+    <div class="sidebar-top">
+      <button id="menuBtn" class="menu-btn" aria-label="Toggle menu">
+        <!-- menu SVG -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <rect x="3" y="6" width="18" height="2" fill="currentColor"></rect>
+          <rect x="3" y="11" width="18" height="2" fill="currentColor"></rect>
+          <rect x="3" y="16" width="18" height="2" fill="currentColor"></rect>
+        </svg>
+      </button>
+
+      <div class="brand">
+        <img src="logo.png" alt="Records Logo" onerror="this.style.display='none'">
+        <span class="brand-text">Records</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-btn active" data-page="home">
+        <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3l9 8h-3v8h-4v-5H10v5H6v-8H3z"/></svg>
+        <span class="label">Home</span>
+      </button>
+
+      <button class="nav-btn" data-page="explore">
+        <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l2.5 6L21 11l-5 3.8L16 21l-4-2.5L8 21l.9-6.2L4 11l6.5-3z"/></svg>
+        <span class="label">Explore</span>
+      </button>
+
+      <button class="nav-btn" data-page="library">
+        <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M4 6h14v2H4zM4 10h14v2H4zM4 14h10v2H4z"/></svg>
+        <span class="label">Library</span>
+      </button>
+
+      <button class="nav-btn" data-page="liked">
+        <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21s-7-4.35-9-7.07C1.39 11.92 3 9 5 8c2-1 3 0 4 1 1-1 2-2 4-1 1 0 3-1 4 0 2 1 3.61 3.92 2 5.93C19 16.65 12 21 12 21z"/></svg>
+        <span class="label">Liked</span>
+      </button>
+    </nav>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <header class="topbar">
+      <div class="search-wrap">
+        <input id="searchInput" type="text" placeholder="Search songs, artists..." autocomplete="off">
+        <!-- white search  -->
+        <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden>
+          <path fill="#fff" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l4.99 5L20.49 19l-5-5zM4 9.5A5.5 5.5 0 119.5 15 5.5 5.5 0 014 9.5z"/>
+        </svg>
+      </div>
+
+      <div class="top-controls">
+        <button id="themeToggle" class="theme-toggle" aria-label="Cycle theme">
+          <span class="theme-indicator"></span>
+        </button>
+
+        <button id="profileBtn" class="profile-btn" aria-label="Profile">
+          <!--  profile SVG -->
+          <svg width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3" fill="currentColor"/><path d="M12 14c-4 0-6 2-6 4v1h12v-1c0-2-2-4-6-4z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section id="home" class="page active">
+        <h2>Home</h2>
+         <p class="muted">Welcome to Records.</p>
+
+        <h3 style="margin-top:20px;">Recently Played</h3>
+     <div id="recentlyPlayed"></div>
+      </section>
+
+
+      <section id="explore" class="page">
+        <h2>Explore</h2>
+        <div id="songGrid" class="song-grid">
+          <article class="song-card" data-src="song.mp3" data-title="Golden Hour" data-artist="JVKE" data-lyrics="It was just two lovers
+Sittin' in the car, listening to Blonde
+Fallin' for each other
+Pink and orange skies, feelin' super childish
+No Donald Glover
+Missed call from my mother
+Like, Where you at tonight? Got no alibi
+I was all alone with the love of my life
+Shes got glitter for skin
+My radiant beam in the night
+I dont need no light to see you
+Shine
+Its your golden hour (oh)
+You slow down time
+In your golden hour (oh)
+We were just two lovers
+Feet up on the dash, drivin' nowhere fast
+Burnin' through the summer
+Radio on blast, make the moment last
+She got solar power
+Minutes feel like hours
+She knew she was the baddest, can you even imagine
+Fallin like I did?
+For the love of my life
+Shes got glow on her face
+A glorious look in her eyes
+My angel of light
+I was all alone with the love of my life
+Shes got glitter for skin
+My radiant beam in the night
+I dont need no light to see you
+Shine
+Its your golden hour (oh)
+You slow down time
+In your golden hour (oh)">
+
+
+            <img src="album-art.jpg" alt="Golden Hour">
+            <div class="meta">
+              <div class="title">Golden Hour</div>
+              <div class="artist">JVKE</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+          <article class="song-card" data-src="song2.mp3" data-title="Iris" data-artist="Goo Goo Dolls" data-lyrics="And Id give up forever to touch you
+Cause I know that you feel me somehow
+Youre the closest to Heaven that Ill ever be
+And I dont wanna go home right now
+And all I can taste is this moment
+And all I can breathe is your life
+And sooner or later, its over
+I just dont wanna miss you tonight
+
+And I dont want the world to see me
+Cause I dont think that theyd understand
+When everythings made to be broken
+I just want you to know who I am
+
+And you cant fight the tears that aint coming
+Or the moment of truth in your lies
+When everything feels like the movies
+Yeah, you bleed just to know youre alive
+
+And I dont want the world to see me
+Cause I dont think that theyd understand
+When everythings made to be broken
+I just want you to know who I am
+
+And I dont want the world to see me
+Cause I dont think that theyd understand
+When everythings made to be broken
+I just want you to know who I am
+
+And I dont want the world to see me
+Cause I dont think that theyd understand
+When everythings made to be broken
+I just want you to know who I am
+
+I just want you to know who I am
+I just want you to know who I am
+I just want you to know who I am">
+
+            <img src="album-art2.jpg" alt="Iris">
+            <div class="meta">
+              <div class="title">Iris</div>
+              <div class="artist">Goo Goo Dolls</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+          <article class="song-card" data-src="song3.mp3" data-title="Creep" data-artist="Radiohead" data-lyrics="When you were here before
+Couldnt look you in the eye
+Youre just like an angel
+Your skin makes me cry
+You float like a feather
+In a beautiful world
+I wish I was special
+Youre so fucking special
+
+But Im a creep
+Im a weirdo
+What the hell am I doing here
+I dont belong here
+
+I dont care if it hurts
+I want to have control
+I want a perfect body
+I want a perfect soul
+I want you to notice
+When Im not around
+Youre so fucking special
+I wish I was special
+
+But Im a creep
+Im a weirdo
+What the hell am I doing here
+I dont belong here
+
+Oh oh
+
+Shes running out the door
+Shes running out
+She run run run run
+Run
+
+Whatever makes you happy
+Whatever you want
+Youre so fucking special
+I wish I was special
+
+But Im a creep
+Im a weirdo
+What the hell am I doing here
+I dont belong here
+I dont belong here">
+
+            <img src="album-art3.jpg" alt="Creep">
+            <div class="meta">
+              <div class="title">Creep</div>
+              <div class="artist">Radiohead</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+        
+
+     <article class="song-card" data-src="song4.mp3" data-title="Come Home" data-artist="Jace June" data-lyrics="So baby come home
+I need you to hold me
+Cause it's getting cold
+And it's getting stormy
+These nights I'm alone
+But my one and only
+Picks up the phone
+And tells me she's
+Never coming home
+Renee's in the bath
+A little unstable
+Cause you broke her bad
+And she was an angel
+She lets out a gasp
+Cause there on the table
+A call from her past
+But she knows she's
+Never going
+La da da da
+Da da da da
+Da da da da
+Da da da
+Da da da da
+Da da da da
+Da da da da
+Da da da da
+Wait
+So baby come home
+I need you to hold me
+Cause it's getting cold
+And it's getting stormy
+These nights I'm alone
+But my one and only
+Picks up the phone
+And tells me she's
+Never coming
+Baby come home
+I need you to hold me
+Cause it's getting cold
+And it's getting stormy
+These nights I'm alone
+But my one and only
+Picks up the phone
+And tells me she's
+Never coming home">
+
+                 <img src="album-art4.jpg" alt="Come Home">
+            <div class="meta">
+              <div class="title">Come Home</div>
+              <div class="artist">Jace June</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+          <article class="song-card" data-src="song5.mp3" data-title="Take me to church" data-artist="Hozier" data-lyrics="My lovers got humour
+Shes the giggle at a funeral
+Knows everybody disapproval
+I shouldve worshipped her sooner
+
+If the heavens ever did speak
+Shes the last true mouthpiece
+Every Sundays getting more bleak
+A fresh poison each week
+
+We were born sick, you heard them say it
+
+My church offers no absolutes
+She tells me, Worship in the bedroom
+The only heaven Ill be sent to
+Is when Im alone with you
+
+I was born sick
+But I love it
+Command me to be well
+Aaay. Amen. Amen. Amen
+
+Take me to church
+Ill worship like a dog at the shrine of your lies
+Ill tell you my sins so you can sharpen your knife
+Offer me that deathless death
+Good God, let me give you my life
+Take me to church
+Ill worship like a dog at the shrine of your lies
+Ill tell you my sins so you can sharpen your knife
+Offer me that deathless death
+Good God, let me give you my life
+
+If Im a pagan of the good times
+My lovers the sunlight
+To keep the Goddess on my side
+She demands a sacrifice
+
+Drain the whole sea
+Get something shiny
+Something meaty for the main course
+Thats a fine-looking high horse
+What you got in the stable?
+Weve a lot of starving faithful
+
+That looks tasty
+That looks plenty
+This is hungry work
+
+Take me to church
+Ill worship like a dog at the shrine of your lies
+Ill tell you my sins so you can sharpen your knife
+Offer me my deathless death
+Good God, let me give you my life
+Take me to church
+Ill worship like a dog at the shrine of your lies
+Ill tell you my sins so you can sharpen your knife
+Offer me my deathless death
+Good God, let me give you my life">
+
+            <img src="album-art5.jpg" alt="Take me to Church">
+            <div class="meta">
+              <div class="title">Take me to Church</div>
+              <div class="artist">Hozier</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+          <article class="song-card" data-src="song6.mp3" data-title="Sprinter" data-artist="Central cee x Dave" data-lyrics="The mandem too inconsiderate, five-star hotel, smokin' cigarette
+Mixin' codeine up with the phenergan
+She got thick, but she wanna get thin again
+Drinkin' apple cider vinegar
+Wearin' Skim 'cause she wanna be Kim and 'em
+Uh, alright
+I know that you're bad, stop actin' innocent
+We ain't got generational wealth
+It's only a year that I've had these millions
+My whip could've been in the Tokyo Drift 'cause it's fast and furious
+I went from the Toyota Yaris to Urus, they had their chance, but blew it
+Now this gyal wan' me in her uterus, fuck it, I'm rich, let's do it (fuck it)
+Take a look at these diamonds wrong, it's a life of squintin', can't just stare
+With bae through thick and thin
+She already thick, so I'm halfway there (hahaha)
+Brown and bad, couldn't change my mind, I was halfway there
+One hundred meters, huh
+I just put nine gyal in a Sprinter (uh)
+One hundred eaters, they won't fit in one SUV, nah
+S-O-S, somebody rescue me
+I got too many gyal, too many-many gyal, I got
+They can last me the next two weeks, uh
+Huh, alright, like send the address through, please
+SUV, the outside white
+The inside brown like Michael Jack'
+More time, man build a line and trap
+Spend like I don't even like my stack
+Pistol came on a Irish ferry, let go and it sound like a tap dance (bap)
+The way that I ball, no yellow
+The ref haffa give me a black card
+Who did what we doin' with rap?
+Man couldn't sell out his show after all them years of doin' the cap
+Sprinter, two gyal in a van
+Inter, two man in Milan, heard one of my tings datin' P. Diddy
+Need 20 percent of whatever she bags
+Outside, my head in my hands
+I told her my name is Cench, she said, No, the one on your birth certificate,  uh
+Your boyfriend ran from the diamond test 'cause they weren't legitimate, nah
+She Turkish-Cypriot, but her curves Brazilian, uh
+I want her, and bro wants her affiliate
+I'm cheap, still hit a chick like, Yo, can I borrow your Netflix?
+She a feminist, she think I'm sexist
+Twistin' my words, I think she dyslexic
+Give me my space, I'm intergalactic
+Before I give you my Insta' password, I'll give you the pin to my AmEx, huh, alright
+This ain't stainless steel, it's platinum
+Dinner table, I got manners, huh
+T-shirt tucked in, napkin
+Still loading,  that's the caption, I've only amounted a minimal fraction
+Eat good, I got indigestion
+Bare snow in my hood, no Aspen, can't get rid of my pain with Aspirin
+Dave just came in an Aston, I'm makin' that Maybach music (M-Maybach Music)
+They're tryna insult my intelligence, sometimes, I may act stupid
+I never went uni, I been on the campus sellin' cocaine to students
+If bro let the drumstick beat, then somethin' gon' leak
+We ain't playin' exclusives
+Take a look at these diamonds wrong, it's a life of squintin', can't just stare
+With bae through thick and thin
+She already thick, so I'm halfway there (hahaha)
+Brown and bad, couldn't change my mind, I was halfway there
+One hundred meters, huh
+I just put nine gyal in a Sprinter (uh)
+One hundred eaters, they won't fit in one SUV, nah
+S-O-S, somebody rescue me
+I got too many gyal, too many-many gyal, I got
+They can last me the next two weeks, uh
+Huh, alright, like send the address through, please
+Fire for a wife beater, can't rock with that, I ain't wearin' a vest
+Man have to send her therapy, she got the E-cup bra, a lot on her chest
+I'm in Jamaica, Oracabess'
+Hit a lick, went cash converters
+That don't work, it's pawn, no chess
+I'm doin' more and talkin' less
+I love chillin' with broke bitches, man book one flight, and they're all impressed (alright)
+I'm in the G63, the car hug me like a friend through twist and turns
+Man livin' for nyash and dyin' for nyash
+It's fucked, don't know which one's worse, I'm fucked
+Bags in his and hers, what's hers is hers, what's mine is too
+Heard that girl is a gold digger, it can't be true if she dated you
+AP baby blue, paper's pink, I'd probably hate me too
+You ever spent six figures and stared at bae like, Look what you made me do?
+Yeah, alright, started with a Q, didn't wait in line
+Weird, I'm askin' my Blasian one, Why you so focused on your Asian side?
+I know that the jack boys pray that they get to the clubs and Dave's inside">
+
+            <img src="album-art6.jpg" alt="Sprinter">
+            <div class="meta">
+              <div class="title">Sprinter</div>
+              <div class="artist">Central cee x Dave</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+          <article class="song-card" data-src="song7.mp3" data-title="Ball w/o" data-artist="21 Savage" data-lyrics="">
+            <img src="album-art7.jpg" alt="Ball w/o">
+            <div class="meta">
+              <div class="title">Ball w/o</div>
+              <div class="artist">21 Savage</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+          <article class="song-card" data-src="song8.mp3" data-title="Pal pal dil ke paas" data-artist="Kishore Kumar" data-lyrics="">
+            <img src="album-art8.jpg" alt="pal pal dil ke paas">
+            <div class="meta">
+              <div class="title">Pal pal dil ke paas</div>
+              <div class="artist">Kishore Kumar</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+          <article class="song-card" data-src="song9.mp3" data-title="Neele Neele ambar par" data-artist="Kishore Kumar" data-lyrics="">
+            <img src="album-art9.jpg" alt="Neele Neele ambar par">
+            <div class="meta">
+              <div class="title">Neele Neele ambar par</div>
+              <div class="artist">Kishore Kumar</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+          <article class="song-card" data-src="song10.mp3" data-title="Ajeeb Dastan hai yeh" data-artist="Lata Mangeshkar" data-lyrics="">
+            <img src="album-art10.jpg" alt="Ajeeb Dastan hai yeh">
+            <div class="meta">
+              <div class="title">Ajeeb Dastan hai yeh</div>
+              <div class="artist">Lata Mangeshkar</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+           <article class="song-card" data-src="song11.mp3" data-title="The winner takes it all" data-artist="ABBA" data-lyrics="">
+            <img src="album-art11.jpg" alt="ABBA">
+            <div class="meta">
+              <div class="title">The winner takes it all</div>
+              <div class="artist">ABBA</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+           <article class="song-card" data-src="song12.mp3" data-title="Always" data-artist="Daniel Caesar" data-lyrics="">
+            <img src="album-art12.jpg" alt="Always">
+            <div class="meta">
+              <div class="title">Always</div>
+              <div class="artist">Daniel Caesar</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+            <article class="song-card" data-src="song13.mp3" data-title="blue" data-artist="Kamal" data-lyrics="">
+            <img src="album-art13.jpg" alt="blue">
+            <div class="meta">
+              <div class="title">blue</div>
+              <div class="artist">kamal</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+            <article class="song-card" data-src="song14.mp3" data-title="choo lo" data-artist="the local train" data-lyrics="">
+            <img src="album-art14.jpg" alt="choo lo">
+            <div class="meta">
+              <div class="title">choo lo</div>
+              <div class="artist">the local train</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+
+            <article class="song-card" data-src="song15.mp3" data-title="Husn" data-artist="Anuv Jain" data-lyrics="">
+            <img src="album-art15.jpg" alt="Husn">
+            <div class="meta">
+              <div class="title">Husn</div>
+              <div class="artist">Anuv Jain</div>
+            </div>
+            <button class="play-small" aria-label="Play">▶</button>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="library" class="page">
+        <h2>Library</h2>
+        <ul id="libraryList" class="list"></ul>
+      </section>
+
+      <section id="liked" class="page">
+        <h2>Liked</h2>
+        <ul id="likedList" class="list"></ul>
+      </section>
+    </main>
+
+    <!-- LYRICS  -->
+    <aside class="lyrics" id="lyricsPanel">
+      <h3>Lyrics</h3>
+      <div id="lyricsContent" class="lyrics-text">Select a song to show lyrics.</div>
+    </aside>
+
+    <!-- PLAYER  -->
+    <footer class="player">
+      <img id="playerArt" src="album-art.jpg" alt="cover">
+      <div class="player-meta">
+        <div id="playerTitle">No song playing</div>
+        <div id="playerArtist" class="muted"></div>
+      </div>
+
+      <div class="player-controls">
+        <button id="playPause">▶</button>
+        <button id="likeNow">♡</button>
+        <button id="addNow">＋</button>
+      </div>
+
+      <div class="progress-wrap">
+        <input id="progress" type="range" min="0" max="100" value="0" aria-label="Progress">
+        <div id="time" class="muted">0:00</div>
+      </div>
+
+      <audio id="audio"></audio>
+    </footer>
+  </div>
+  <!-- LOGIN MODAL -->
+  <div class="login-modal" id="loginModal">
+    <div class="login-box">
+      <button class="close-btn" id="closeLogin">&times;</button>
+      <h2>Welcome Back</h2>
+      <form>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" required>
+        <button id="loginBtn" type="submit">Log In</button>
+      </form>
+      <p style="margin-top:12px;font-size:0.9rem;color:var(--muted);">
+        Don’t have an account? <a href="#" style="color:var(--accent-color);text-decoration:none;">Sign up</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
